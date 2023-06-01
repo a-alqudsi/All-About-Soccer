@@ -1,1 +1,1 @@
-# All-About-Soccer
+In this project, I developed a user-friendly website, providing detailed data about global soccer teams . Utilizing HTML, CSS, and JavaScript, this website showcases a variety of technologies: from dynamic content loading from XML data via AJAX, to advanced CSS techniques for responsive design, and JavaScript for form validation. Additional features include a quiz to engage users, and a real-time display developed in JavaScript that adjusts greeting messages according to the time of day.
