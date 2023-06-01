@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domestic Leagues</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="js/modernizr.custom.05819.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="worldcup.html">World Cup</a></li>
+        <li><a href="championsleague.html">Champions League</a></li>
+        <li><a href="domesticleagues.html">Domestic Leagues</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Domestic Leagues</h1>
+    <img src="images/domesticleagues1.jpg" title="DomesticLeagues1" alt="DomesticLeagues1" width="1280" height="1280">
+    <!-- Source: https://en.wikipedia.org/wiki/Domestic_association_football_season -->
+    <p>The domestic association football season in countries that association football is played around the world varies in length and time of year contested. Most employ a single period in which the main league competition is contested alongside any cup competitions, although many Latin American leagues have two competitions contested in one season under the Apertura and Clausura system.</p>
+    <p>As a rule, the period of the domestic football season is ultimately dictated by the weather, with most football games played on natural grass pitches which are vulnerable to freezing or becoming water-logged, although advances in artificial turf and pitch drainage/heating systems have improved pitch availability in many leagues.</p>
+    <p>In countries where association football competes with other football codes that are locally more popular, the season cycle can also be dictated by the scheduling of competing codes. Major League Soccer (MLS), which began in the United States and has since expanded into Canada, has had to compete with American football from its inception, and now competes with Canadian football as well. When MLS began, most of its teams had to play in large American football stadiums that were used by teams in the NFL or college football. This led to scheduling the season to begin in spring and end in fall (autumn), which put the bulk of the season outside that of American football. Stadium conflict has now been reduced with the advent of soccer-specific stadiums. In Australia, the two most popular football codes are Australian rules football and rugby league, both of which are traditionally played in the Southern Hemisphere winter. Because all of the stadiums used by the A-League are also used for one or both of these two codes, that league chose to operate on a spring-to-autumn cycle, which placed most of its season outside those of Australian rules and rugby league.</p> 
+    <p>The domestic season is preceded by a pre-season, in which clubs will require players to report back to the club by a set date to begin pre-season training, and will arrange pre-season friendly games toward the start of the season to improve fitness and test team formations and tactics, particularly if new playing staff have joined a club.</p>
+    <p>In many leagues, the dates of the domestic season dictate the opening and closing of a transfer window, the periods when players can be transferred.</p> 
+    <p>The timing of a domestic season must be coordinated with international football competitions, which can see national teams with different domestic seasons playing each other at different times in their domestic season, although this can be less significant for certain countries where their best players, and hence the bulk of their national team, do not play in their international team's domestic league programme.</p>
+    <p>The world football governing body, FIFA, which governs club as well as national football, mandates an international football calendar, whereby certain weeks in the year are reserved for national friendly and competitive matches, as well as regional club competitions. For dates which fall within a country's domestic season, league clubs are required to release any called up player for their international team a set number of days before a fixture. The date of the worldwide national team competition the FIFA World Cup is always in June/July, with the exception of the 2022 Qatar World Cup which will be played in November/December.</p>
+    <button onclick="loadDoc()">Soccer Teams</button>
+    <br><br>
+    <table id="demo"></table>
+    <script>
+      function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+          myFunction(this);
+        }
+        xhttp.open("GET", "soccer.xml");
+        xhttp.send();
+      }
+      function myFunction(xml) {
+  const xmlDoc = xml.responseXML;
+  const x = xmlDoc.getElementsByTagName("SOCCER_TEAM");
+  let table = "<tr><th>Team Name</th><th>Country</th><th>League</th><th>Stadium</th><th>Established</th></tr>";
+  for (let i = 0; i < x.length; i++) {
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("COUNTRY")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("LEAGUE")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("STADIUM")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("ESTABLISHED")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+
+    </script>
+    
+        
+    <img src="images/domesticleagues2.jpg" title="DomesticLeagues2" alt="DomesticLeagues2" width="1280" height="1280">
+        <div id="date-time-display"></div>
+        <div class="soccer"></div>      
+      </main>
+      <form id="myForm" action="mailto:#" method="post" enctype="text/plain">
+        <div>
+          <label for="firstName">First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name:</label>
+          <label for="lastName"></label>
+          <input type="text" id="firstName" name="firstName" required>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div>
+          <label for="options">Which of the following<br>soccer leagues do you<br>think is the most<br>competitive and exciting<br>to watch?</label>
+          <select id="options" name="options[]" multiple required>
+            <option value="option1">Premier League (England)</option>
+            <option value="option2">La Liga (Spain)</option>
+            <option value="option3">Bundesliga (Germany)</option>
+            <option value="option4">Serie A (Italy)</option>
+            <option value="option5">Ligue 1 (France)</option>
+          </select>
+        </div>
+        <div>
+          <label for="comments">Comments:</label>
+          <textarea id="comments" name="comments" required></textarea>
+        </div>
+        <button type="submit" id="submit">Submit</button>
+      </form>
+  <footer>
+    <p>&copy; 2023 Soccer Website<br>By: Abdulrahman Alqudsi</p>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
